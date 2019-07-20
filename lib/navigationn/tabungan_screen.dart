@@ -22,6 +22,8 @@ class _TabunganScreenState extends State<TabunganScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      backgroundColor: Color(0xfffafcff),
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here

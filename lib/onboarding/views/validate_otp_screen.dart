@@ -17,7 +17,6 @@ class ValidateOtpScreen extends StatefulWidget {
 
 class _ValidateOtpScreenState extends State<ValidateOtpScreen>
     implements MyLoading {
-
   Map<String, dynamic> data = {};
 
   final FocusNode _one = FocusNode();
@@ -40,8 +39,8 @@ class _ValidateOtpScreenState extends State<ValidateOtpScreen>
   _postOtp() async {
     try {
       response = await postValidateOtp(jsonEncode(data), this);
-      setState(() {
-      });
+
+      setState(() {});
     } catch (e) {
       print(e);
     }
@@ -50,6 +49,8 @@ class _ValidateOtpScreenState extends State<ValidateOtpScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      backgroundColor: Color(0xfffafcff),
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
@@ -64,8 +65,9 @@ class _ValidateOtpScreenState extends State<ValidateOtpScreen>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            museoText("Untuk validasi perangkat, masukkan kode verifikasi yang telah dikirimkan ke cla****@****.com", fontSize: 24.0),
-
+            museoText(
+                "Untuk validasi perangkat, masukkan kode verifikasi yang telah dikirimkan ke cla****@****.com",
+                fontSize: 24.0),
             Form(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -207,7 +209,9 @@ class _ValidateOtpScreenState extends State<ValidateOtpScreen>
                 ],
               ),
             ),
-            Container(height: 24.0,),
+            Container(
+              height: 24.0,
+            ),
             Row(
               children: <Widget>[
                 Expanded(
@@ -218,17 +222,15 @@ class _ValidateOtpScreenState extends State<ValidateOtpScreen>
                     ),
                     color: Colors.blue[900],
                     onPressed: () {
-//                  if (!_formKey.currentState.validate()) {
-//                    print("FAILED");
-//                    return;
-//                  }
-//                  _formKey.currentState.save();
-//                  print(data);
-                      //postLogin(data, this);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (c) => PickPlanScreen(response)));
+                      String otp = _oneController.text +
+                          _twoController.text +
+                          _threeController.text +
+                          _fourController.text +
+                          _fiveController.text +
+                          _sixController.text;
+                      data["otp"] = otp;
+
+                      _postOtp();
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -256,12 +258,11 @@ class _ValidateOtpScreenState extends State<ValidateOtpScreen>
   @override
   void finishLoading(isSuccess, {message}) {
     MyDialog(context).pop();
-    if (!isSuccess) MyDialog(context).error(message);
+    if (!isSuccess)
+      MyDialog(context).error(message);
     else
       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (c) => PickPlanScreen(response)));
+          context, MaterialPageRoute(builder: (c) => PickPlanScreen(response)));
   }
 
   @override

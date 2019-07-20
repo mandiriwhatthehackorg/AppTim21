@@ -1,15 +1,32 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:xplore_mandiri/etb/etb_screen.dart';
-import 'package:xplore_mandiri/navigationn/navigation_screen.dart';
+import 'package:xplore_mandiri/my_widget.dart';
 
-import '../../my_widget.dart';
+import 'final_screen.dart';
 
-class FinalScreen extends StatefulWidget {
+class AntrianScreen extends StatefulWidget {
   @override
-  _FinalScreenState createState() => _FinalScreenState();
+  _AntrianScreenState createState() => _AntrianScreenState();
 }
 
-class _FinalScreenState extends State<FinalScreen> {
+class _AntrianScreenState extends State<AntrianScreen> {
+  bool done = false;
+
+  _wait() {
+    Timer(Duration(seconds: 2), () async {
+      setState(() {
+        done = true;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    _wait();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,31 +57,25 @@ class _FinalScreenState extends State<FinalScreen> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    CircleAvatar(
-                      backgroundColor: Colors.blue[900],
-                      child: museoText("4",
-                          color: Colors.white,
-                          bold: FontWeight.bold,
-                          fontSize: 18.0),
-                    ),
-                    museoText(" dari 4", color: Colors.grey, fontSize: 20.0),
-                  ],
-                ),
+
                 Container(
-                  height: 32.0,
-                ),
-                museoText(
-                    "Selamat, akun mandiri tabungan rupiah Anda telah dibuka.",
-                    fontSize: 20.0,
-                    color: Colors.blue[900],
-                    bold: FontWeight.bold),
-                Container(
-                  height: 24.0,
-                ),
+                    width: 200.0,
+                    height: 200.0,
+                    padding: EdgeInsets.all(32.0),
+                    child: !done
+                        ? CircularProgressIndicator()
+                        : Icon(
+                            Icons.check,
+                            size: 100.0,
+                            color: Colors.green,
+                          )),
+                museoText("Anda sedang dalam antrian",
+                    bold: FontWeight.bold, fontSize: 22.0),
+                museoText("Hardap tunggu"),
+
+                Container(height: 32.0,),
                 Row(
                   children: <Widget>[
                     Expanded(
@@ -75,14 +86,13 @@ class _FinalScreenState extends State<FinalScreen> {
                         ),
                         color: Colors.blue[900],
                         onPressed: () {
-
-                          Navigator.pushReplacement(
-                              context, MaterialPageRoute(builder: (c) => NavigationScreen(etb: true,)));
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (c) => FinalScreen()));
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            museoText("Lanjut",
+                            museoText("Lanjutkan",
                                 color: Colors.white,
                                 bold: FontWeight.bold,
                                 fontSize: 18.0),
@@ -99,6 +109,7 @@ class _FinalScreenState extends State<FinalScreen> {
               ],
             ),
           ),
+
         ],
       ),
     );

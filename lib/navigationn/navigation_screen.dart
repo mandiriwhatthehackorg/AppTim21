@@ -3,11 +3,17 @@ import 'package:xplore_mandiri/my_widget.dart';
 import 'package:xplore_mandiri/navigationn/HomeScreen.dart';
 
 class NavigationScreen extends StatefulWidget {
+  bool etb;
+
+  NavigationScreen({this.etb = false});
   @override
-  _NavigationScreenState createState() => _NavigationScreenState();
+  _NavigationScreenState createState() => _NavigationScreenState(etb);
 }
 
 class _NavigationScreenState extends State<NavigationScreen> {
+
+  bool etb;
+  _NavigationScreenState(this.etb);
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -20,8 +26,17 @@ class _NavigationScreenState extends State<NavigationScreen> {
     HomeScreen(),
     Text("1"),
     Text("1"),
-    Text("1"),
   ];
+
+  @override
+  void initState() {
+    _widgetOptions = <Widget>[
+      HomeScreen(etb: etb,),
+      Text("1"),
+      Text("1"),
+    ];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +55,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.confirmation_number, color: Color(0xff041b34),),
             title: Text('Konfirmasi'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.apps, color: Color(0xff041b34)),
-            title: Text('Apps'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person, color: Color(0xff041b34),),

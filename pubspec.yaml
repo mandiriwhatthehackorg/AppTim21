@@ -26,8 +26,8 @@ dependencies:
   shared_preferences: ^0.5.2
   http: ^0.12.0+2
   intl: 0.15.8
-
   flutter_money_formatter: ^0.8.2
+  image_picker: ^0.6.0+17
 
 dev_dependencies:
   flutter_test:

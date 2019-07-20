@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:xplore_mandiri/onboarding/views/upload_image_screen.dart';
+import 'package:xplore_mandiri/onboarding/views/validate_otp_screen.dart';
 
 import '../../my_widget.dart';
+import '../../strings.dart';
 import 'create_session_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -8,10 +12,32 @@ class OnBoardingScreen extends StatefulWidget {
   _OnBoardingScreenState createState() => _OnBoardingScreenState();
 }
 
+
+
+
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
+
+  int recent;
+
+  _getPref() async {
+    var ref = await SharedPreferences.getInstance();
+    var token = ref.getString(TOKEN) ?? 'yo';
+    print(token);
+    recent = ref.getInt(ONBOARD) ?? 0;
+  }
+
+  @override
+  void initState() {
+    _getPref();
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      backgroundColor: Color(0xfffafcff),
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
@@ -77,7 +103,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       children: <Widget>[
                         InkWell(
                           onTap:(){
-                            Navigator.pushReplacement(
+                            Navigator.push(
                                 context, MaterialPageRoute(builder: (c) => CreateSessionScreen()));
                           },
                           child: Padding(
@@ -127,94 +153,106 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         ),
 
                         Divider(),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  CircleAvatar(
-                                    backgroundColor: Colors.grey,
-                                    child: museoText("2",
-                                        color: Colors.white,
-                                        bold: FontWeight.bold,
-                                        fontSize: 18.0),
-                                  ),
-                                  Container(
-                                    width: 16.0,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        museoText(
-                                            "Pilih kartu debit mandiri",
-                                            fontSize: 18.0),
-                                        museoText(
-                                            "Mudah untuk melakukan pembayaran di banyak mitra."),
-                                      ],
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(
+                                context, MaterialPageRoute(builder: (c) => ValidateOtpScreen()));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    CircleAvatar(
+                                      backgroundColor: Colors.grey,
+                                      child: museoText("2",
+                                          color: Colors.white,
+                                          bold: FontWeight.bold,
+                                          fontSize: 18.0),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  museoText("Mulai", color: Colors.blue[900]),
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    color: Colors.blue[900],
-                                  ),
-                                ],
-                              ),
-                            ],
+                                    Container(
+                                      width: 16.0,
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          museoText(
+                                              "Pilih kartu debit mandiri",
+                                              fontSize: 18.0),
+                                          museoText(
+                                              "Mudah untuk melakukan pembayaran di banyak mitra."),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    museoText("Mulai", color: Colors.blue[900]),
+                                    Icon(
+                                      Icons.arrow_forward,
+                                      color: Colors.blue[900],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
 
                         Divider(),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  CircleAvatar(
-                                    backgroundColor: Colors.grey,
-                                    child: museoText("3",
-                                        color: Colors.white,
-                                        bold: FontWeight.bold,
-                                        fontSize: 18.0),
-                                  ),
-                                  Container(
-                                    width: 16.0,
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        museoText(
-                                            "Validasi identitas",
-                                            fontSize: 18.0),
-                                        museoText(
-                                            "Memastikan keaslian identitas yang Anda kirim."),
-                                      ],
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(
+                                context, MaterialPageRoute(builder: (c) => UploadImageScreen()));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    CircleAvatar(
+                                      backgroundColor: Colors.grey,
+                                      child: museoText("3",
+                                          color: Colors.white,
+                                          bold: FontWeight.bold,
+                                          fontSize: 18.0),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  museoText("Mulai", color: Colors.blue[900]),
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    color: Colors.blue[900],
-                                  ),
-                                ],
-                              ),
-                            ],
+                                    Container(
+                                      width: 16.0,
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          museoText(
+                                              "Validasi identitas",
+                                              fontSize: 18.0),
+                                          museoText(
+                                              "Memastikan keaslian identitas yang Anda kirim."),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    museoText("Mulai", color: Colors.blue[900]),
+                                    Icon(
+                                      Icons.arrow_forward,
+                                      color: Colors.blue[900],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
 
