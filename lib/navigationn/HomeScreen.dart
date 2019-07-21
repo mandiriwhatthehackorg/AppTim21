@@ -370,203 +370,209 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Image.asset(
-                          "assets/images/promo1.png",
-                          width: 200.0,
-                          height: 200.0,
-                          fit: BoxFit.cover,
-                        ),
-                        Container(
-                          height: 13.0,
-                        ),
-                        museoText("mudah beli rumah",
-                            fontSize: 20.0,
-                            color: Colors.blue[900],
-                            bold: FontWeight.bold),
-                        museoText(
-                          "dengan mandiri kpr milenial",
-                          fontSize: 18.0,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Image.asset(
-                          "assets/images/promo2.png",
-                          width: 200.0,
-                          height: 200.0,
-                          fit: BoxFit.cover,
-                        ),
-                        Container(
-                          height: 13.0,
-                        ),
-                        museoText("bisnis makin cuan",
-                            fontSize: 20.0,
-                            color: Colors.blue[900],
-                            bold: FontWeight.bold),
-                        museoText(
-                          "dengan mandiri tabungan bisnis",
-                          fontSize: 18.0,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 350.0,
-                    height: 300.0,
-                    child: Stack(
-                      children: <Widget>[
-                        Column(
+            
+            !widget.etb?Column(
+              children: <Widget>[
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Container(height: 40.0),
+                            Image.asset(
+                              "assets/images/promo1.png",
+                              width: 200.0,
+                              height: 200.0,
+                              fit: BoxFit.cover,
+                            ),
                             Container(
-                              padding: EdgeInsets.all(16.0),
-                              width: MediaQuery.of(context).size.width,
-                              height: 250.0,
-                              color: Colors.blue[900],
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
+                              height: 13.0,
+                            ),
+                            museoText("mudah beli rumah",
+                                fontSize: 20.0,
+                                color: Colors.blue[900],
+                                bold: FontWeight.bold),
+                            museoText(
+                              "dengan mandiri kpr milenial",
+                              fontSize: 18.0,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Image.asset(
+                              "assets/images/promo2.png",
+                              width: 200.0,
+                              height: 200.0,
+                              fit: BoxFit.cover,
+                            ),
+                            Container(
+                              height: 13.0,
+                            ),
+                            museoText("bisnis makin cuan",
+                                fontSize: 20.0,
+                                color: Colors.blue[900],
+                                bold: FontWeight.bold),
+                            museoText(
+                              "dengan mandiri tabungan bisnis",
+                              fontSize: 18.0,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 350.0,
+                        height: 300.0,
+                        child: Stack(
+                          children: <Widget>[
+                            Column(
+                              children: <Widget>[
+                                Container(height: 40.0),
+                                Container(
+                                  padding: EdgeInsets.all(16.0),
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 250.0,
+                                  color: Colors.blue[900],
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      museoText("nikmati semua",
-                                          color: Colors.white,
-                                          fontSize: 26.0,
-                                          bold: FontWeight.bold),
-                                      museoText("kemudahan dalam",
-                                          color: Colors.white,
-                                          fontSize: 26.0,
-                                          bold: FontWeight.bold),
-                                      museoText("satu genggaman",
-                                          color: Colors.white,
-                                          fontSize: 26.0,
-                                          bold: FontWeight.bold),
+                                      Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          museoText("nikmati semua",
+                                              color: Colors.white,
+                                              fontSize: 26.0,
+                                              bold: FontWeight.bold),
+                                          museoText("kemudahan dalam",
+                                              color: Colors.white,
+                                              fontSize: 26.0,
+                                              bold: FontWeight.bold),
+                                          museoText("satu genggaman",
+                                              color: Colors.white,
+                                              fontSize: 26.0,
+                                              bold: FontWeight.bold),
+                                        ],
+                                      ),
+                                      RaisedButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (c) =>
+                                                      OnBoardingScreen()));
+                                        },
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            museoText("Buka rekening sekarang",
+                                                color: Colors.blue[900],
+                                                bold: FontWeight.bold),
+                                            Container(
+                                              width: 50.0,
+                                            ),
+                                            Icon(
+                                              Icons.arrow_forward,
+                                              color: Colors.blue[900],
+                                            )
+                                          ],
+                                        ),
+                                      ),
                                     ],
                                   ),
-                                  RaisedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (c) =>
-                                                  OnBoardingScreen()));
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: <Widget>[
-                                        museoText("Buka rekening sekarang",
-                                            color: Colors.blue[900],
-                                            bold: FontWeight.bold),
-                                        Container(
-                                          width: 50.0,
-                                        ),
-                                        Icon(
-                                          Icons.arrow_forward,
-                                          color: Colors.blue[900],
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
+                                ),
+                              ],
+                            ),
+                            Positioned(
+                              top: 0.0,
+                              right: 0.0,
+                              child: Image.asset(
+                                "assets/images/hand.png",
+                                width: 119.0,
+                                height: 141.0,
                               ),
                             ),
                           ],
                         ),
-                        Positioned(
-                          top: 0.0,
-                          right: 0.0,
-                          child: Image.asset(
-                            "assets/images/hand.png",
-                            width: 119.0,
-                            height: 141.0,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            _mandiri(),
-            Container(
-              height: 16.0,
-            ),
-            _syariah(),
-            Container(
-              height: 16.0,
-            ),
-            _investasi(),
-            Container(
-              height: 32.0,
-            ),
-            !widget.etb?Container(
-              padding: EdgeInsets.all(16.0),
-              width: MediaQuery.of(context).size.width,
-              height: 192.0,
-              color: Colors.blue[900],
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      museoText("nikmati semua",
-                          color: Colors.white,
-                          fontSize: 26.0,
-                          bold: FontWeight.bold),
-                      museoText("kemudahan dalam",
-                          color: Colors.white,
-                          fontSize: 26.0,
-                          bold: FontWeight.bold),
-                      museoText("satu genggaman.",
-                          color: Colors.white,
-                          fontSize: 26.0,
-                          bold: FontWeight.bold),
+                      ),
                     ],
                   ),
-                  RaisedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (c) => OnBoardingScreen()));
-                    },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        museoText("Buka rekening sekarang",
-                            color: Colors.blue[900], bold: FontWeight.bold),
-                        Container(
-                          width: 50.0,
+                ),
+                _mandiri(),
+                Container(
+                  height: 16.0,
+                ),
+                _syariah(),
+                Container(
+                  height: 16.0,
+                ),
+                _investasi(),
+                Container(
+                  height: 32.0,
+                ),
+                Container(
+                  padding: EdgeInsets.all(16.0),
+                  width: MediaQuery.of(context).size.width,
+                  height: 192.0,
+                  color: Colors.blue[900],
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          museoText("nikmati semua",
+                              color: Colors.white,
+                              fontSize: 26.0,
+                              bold: FontWeight.bold),
+                          museoText("kemudahan dalam",
+                              color: Colors.white,
+                              fontSize: 26.0,
+                              bold: FontWeight.bold),
+                          museoText("satu genggaman.",
+                              color: Colors.white,
+                              fontSize: 26.0,
+                              bold: FontWeight.bold),
+                        ],
+                      ),
+                      RaisedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (c) => OnBoardingScreen()));
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            museoText("Buka rekening sekarang",
+                                color: Colors.blue[900], bold: FontWeight.bold),
+                            Container(
+                              width: 50.0,
+                            ),
+                            Icon(
+                              Icons.arrow_forward,
+                              color: Colors.blue[900],
+                            )
+                          ],
                         ),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: Colors.blue[900],
-                        )
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ):Container(),
+                ),
+              ],
+            ):Image.asset("assets/images/etb_content.png",),
+            
           ],
         ),
       ),

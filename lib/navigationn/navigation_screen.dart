@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xplore_mandiri/my_widget.dart';
 import 'package:xplore_mandiri/navigationn/HomeScreen.dart';
+import 'package:xplore_mandiri/navigationn/promo_tab.dart';
 
 class NavigationScreen extends StatefulWidget {
   bool etb;
@@ -24,7 +25,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
 
   static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    Text("1"),
+    PromoTab(),
     Text("1"),
   ];
 
@@ -32,7 +33,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   void initState() {
     _widgetOptions = <Widget>[
       HomeScreen(etb: etb,),
-      Text("1"),
+      PromoTab(),
       Text("1"),
     ];
     super.initState();
@@ -45,7 +46,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
         padding: const EdgeInsets.only(top:16.0),
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: !etb?BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -55,6 +56,26 @@ class _NavigationScreenState extends State<NavigationScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.confirmation_number, color: Color(0xff041b34),),
             title: Text('Konfirmasi'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person, color: Color(0xff041b34),),
+            title: Text('Profil'),
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        unselectedItemColor: Color(0xff041b34),
+        selectedItemColor: Colors.orange,
+        onTap: _onItemTapped,
+      ):BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home, color: Color(0xff041b34),),
+            title: Text("Home"),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.confirmation_number, color: Color(0xff041b34),),
+            title: Text('Promo'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person, color: Color(0xff041b34),),
